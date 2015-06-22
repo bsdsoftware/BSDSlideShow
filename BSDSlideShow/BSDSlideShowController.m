@@ -85,14 +85,20 @@
 }
 
 - (void)showNextImage:(BOOL)animating {
+	[NSObject cancelPreviousPerformRequestsWithTarget:self];
+	
 	CGRect slideshowViewBounds = self.slideshowView.bounds;
 	CGFloat deltaX = CGRectGetWidth(slideshowViewBounds);
 	
-	[UIView animateWithDuration:self.animationDuration animations:^{
+	void(^animationBlock)() = ^{
 		self.visibleImageView.frame = CGRectOffset(self.visibleImageView.frame, -deltaX, 0);
 		self.nextImageView.frame = CGRectOffset(self.nextImageView.frame, -deltaX, 0);
+	};
+	
+	void(^completitionBlock)(BOOL) = ^(BOOL finished) {
+		if (!finished)
+			return;
 		
-	} completion:^(BOOL finished) {
 		self.currentImageIndex = [self calculateNextImageIndex];
 		if (self.pageControl) {
 			self.pageControl.currentPage = self.currentImageIndex;
@@ -105,7 +111,16 @@
 		[self preloadNextImage];
 		
 		[self performSelector:@selector(showNextImage:) withObject:@(YES) afterDelay:self.changeImageInterval];
-	}];
+	};
+	
+	if (animating) {
+		[UIView animateWithDuration:self.animationDuration
+						 animations:animationBlock
+						 completion:completitionBlock];
+	} else {
+		animationBlock();
+		completitionBlock(YES);
+	}
 }
 
 @end

@@ -31,9 +31,24 @@
                                     <constraint firstAttribute="height" constant="358" id="vnJ-RC-0mi"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDd-fQ-kHH">
+                                <rect key="frame" x="284" y="487" width="32" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6y7-wY-wg1"/>
+                                    <constraint firstAttribute="width" constant="32" id="DNe-Kv-sVK"/>
+                                </constraints>
+                                <state key="normal" title="Next">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8qW-mR-MdL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="GuA-KQ-YDJ" firstAttribute="centerX" secondItem="rDd-fQ-kHH" secondAttribute="centerX" id="1Tr-6L-EOD"/>
+                            <constraint firstItem="rDd-fQ-kHH" firstAttribute="top" secondItem="GuA-KQ-YDJ" secondAttribute="bottom" constant="8" id="d3n-DO-XGe"/>
                             <constraint firstAttribute="centerX" secondItem="GuA-KQ-YDJ" secondAttribute="centerX" id="fvI-49-KMp"/>
                             <constraint firstAttribute="centerY" secondItem="GuA-KQ-YDJ" secondAttribute="centerY" id="lIN-Ma-fKu"/>
                         </constraints>

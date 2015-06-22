@@ -13,5 +13,7 @@
 
 @property (strong, nonatomic) IBOutlet BSDSlideShowController *slideshowController;
 
+- (IBAction)nextImage:(id)sender;
+
 @end
 

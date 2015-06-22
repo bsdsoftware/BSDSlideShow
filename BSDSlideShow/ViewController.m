@@ -23,4 +23,8 @@
 														 [UIImage imageNamed:@"img4"]]];
 }
 
+- (IBAction)nextImage:(id)sender {
+	[self.slideshowController showNextImage:NO];
+}
+
 @end
