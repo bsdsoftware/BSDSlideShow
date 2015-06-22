@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GuA-KQ-YDJ">
+                                <rect key="frame" x="125" y="121" width="350" height="358"/>
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ISS-lC-OvT">
+                                        <rect key="frame" x="211" y="8" width="39" height="37"/>
+                                    </pageControl>
+                                </subviews>
+                                <color key="backgroundColor" red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ISS-lC-OvT" firstAttribute="top" secondItem="GuA-KQ-YDJ" secondAttribute="top" constant="8" id="JfP-T9-aXb"/>
+                                    <constraint firstAttribute="trailing" secondItem="ISS-lC-OvT" secondAttribute="trailing" constant="100" id="iGf-SQ-IFb"/>
+                                    <constraint firstAttribute="width" constant="350" id="ugg-ce-U5E"/>
+                                    <constraint firstAttribute="height" constant="358" id="vnJ-RC-0mi"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="GuA-KQ-YDJ" secondAttribute="centerX" id="fvI-49-KMp"/>
+                            <constraint firstAttribute="centerY" secondItem="GuA-KQ-YDJ" secondAttribute="centerY" id="lIN-Ma-fKu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="slideshowController" destination="NJH-4o-veh" id="W8M-yR-eIe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <customObject id="NJH-4o-veh" userLabel="BSDSlideShowController" customClass="BSDSlideShowController">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="changeImageInterval">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="animationDuration">
+                            <real key="value" value="0.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="pageControl" destination="ISS-lC-OvT" id="dya-xT-BNz"/>
+                        <outlet property="slideshowView" destination="GuA-KQ-YDJ" id="le6-cS-b5I"/>
+                    </connections>
+                </customObject>
+            </objects>
+        </scene>
+    </scenes>
+</document>
