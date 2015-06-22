@@ -59,7 +59,7 @@
 	[self.slideshowView addSubview:self.nextImageView];
 	[self preloadNextImage];
 	
-	[self performSelector:@selector(showNextImage:) withObject:@(YES) afterDelay:self.changeImageInterval];
+	[self performSelector:@selector(showNextImageAnimatingNSNumber:) withObject:@(YES) afterDelay:self.changeImageInterval];
 }
 
 - (UIImage *)currentImage {
@@ -85,8 +85,13 @@
 }
 
 - (void)showNextImage:(BOOL)animating {
+	[self showNextImageAnimatingNSNumber:@(animating)];
+}
+
+- (void)showNextImageAnimatingNSNumber:(NSNumber *)animatingNumber {
 	[NSObject cancelPreviousPerformRequestsWithTarget:self];
 	
+	BOOL animating = [animatingNumber boolValue];
 	CGRect slideshowViewBounds = self.slideshowView.bounds;
 	CGFloat deltaX = CGRectGetWidth(slideshowViewBounds);
 	
@@ -110,7 +115,7 @@
 		self.nextImageView.frame = CGRectOffset(self.nextImageView.frame, 2 * deltaX, 0);
 		[self preloadNextImage];
 		
-		[self performSelector:@selector(showNextImage:) withObject:@(YES) afterDelay:self.changeImageInterval];
+		[self performSelector:@selector(showNextImageAnimatingNSNumber:) withObject:@(YES) afterDelay:self.changeImageInterval];
 	};
 	
 	if (animating) {
