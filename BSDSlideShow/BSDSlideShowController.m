@@ -31,8 +31,19 @@
 	[NSObject cancelPreviousPerformRequestsWithTarget:self];
 }
 
+- (void)clearImageViews {
+	for (UIView *subView in self.slideshowView.subviews) {
+		if ([subView isKindOfClass:[UIImageView class]]) {
+			[subView removeFromSuperview];
+		}
+	}
+}
+
 - (void)beginSlideshowWithImages:(NSArray *)images {
 	assert(self.slideshowView != nil);
+	
+	[NSObject cancelPreviousPerformRequestsWithTarget:self];
+	[self clearImageViews];
 	
 	if (self.changeImageInterval <= 0)
 		self.changeImageInterval = 5;
@@ -45,14 +56,16 @@
 	}
 	
 	CGRect slideshowViewBounds = self.slideshowView.bounds;
-	UIImageView *imgView1 = [[UIImageView alloc] initWithFrame:slideshowViewBounds];
-	imgView1.image = [self currentImage];
+	UIImageView *imgView1 = [[UIImageView alloc] initWithImage:[self currentImage]];
 	imgView1.contentMode = self.contentMode;
+	imgView1.frame = slideshowViewBounds;
+	imgView1.clipsToBounds = YES;
 	self.visibleImageView = imgView1;
 	
 	UIImageView *imgView2 = [[UIImageView alloc] initWithFrame:slideshowViewBounds];
 	imgView2.frame = CGRectOffset(imgView2.frame, CGRectGetWidth(slideshowViewBounds), 0);
 	imgView2.contentMode = self.contentMode;
+	imgView2.clipsToBounds = YES;
 	self.nextImageView = imgView2;
 	
 	[self.slideshowView addSubview:self.visibleImageView];
