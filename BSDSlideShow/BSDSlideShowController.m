@@ -72,7 +72,9 @@
 	[self.slideshowView addSubview:self.nextImageView];
 	[self preloadNextImage];
 	
-	[self performSelector:@selector(showNextImageAnimatingNSNumber:) withObject:@(YES) afterDelay:self.changeImageInterval];
+	if (self.images.count > 1) {
+		[self performSelector:@selector(showNextImageAnimatingNSNumber:) withObject:@(YES) afterDelay:self.changeImageInterval];
+	}
 }
 
 - (UIImage *)currentImage {
